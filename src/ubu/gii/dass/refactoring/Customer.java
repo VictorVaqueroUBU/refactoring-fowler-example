@@ -30,23 +30,46 @@ public class Customer {
 		return _name;
 	};
 
-	public String statement() {
+	public String statement(boolean generateInHTML) {
 		double totalAmount = 0;
+		String result = "";
 		int frequentRenterPoints = 0;
 		Iterator<Rental> rentals = _rentals.iterator();
-		String result = "Rental Record for " + getName() + "\n";
+
+		if (generateInHTML) {
+			result += "<h1>";
+		}
+		result = "Rental Record for " + getName() + "\n";
+
+		if (generateInHTML) {
+			result += "</h1>";
+		} else {
+			result += "\n";
+		}
+
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental rental = rentals.next();
 			thisAmount += rental.calculateAmount();
 			frequentRenterPoints += rental.increaseFrequentRenterPoints();
 			// show figures for this rental
-			result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+			if (generateInHTML) {
+				result += "<H2>" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "</H2>";
+			} else {
+				result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
+			}
+
 			totalAmount += thisAmount;
 		}
 		// add footer lines
-		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-		result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+		if (generateInHTML) {
+			result += "<p> Amount owed is " + String.valueOf(totalAmount) + "</p>";
+			result += "<p> You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points </p>";
+		} else {
+			result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
+			result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
+		}
+
 		return result;
 	}
 }

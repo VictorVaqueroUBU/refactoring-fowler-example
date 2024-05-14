@@ -1,0 +1,15 @@
+1715618953164	Extract method 'calculateAmount'
+1715619083383	Move method 'calculateAmount'
+1715704747172	Rename local variable 'each'
+1715707688526	Rename local variable 'thisAmount'
+1715707775697	Change method 'calculateAmount'
+1715619830875	Extract method 'increaseFrequentRenterPoints'
+1715621002638	Move method 'increaseFrequentRenterPoints'
+1715708233082	Rename local variable 'frequentRenterPoints'
+1715708254383	Change method 'increaseFrequentRenterPoints'
+1715708643072	Change method 'statement'
+
+
+
+
+

@@ -39,7 +39,7 @@ public class Customer {
 		if (generateInHTML) {
 			result += "<h1>";
 		}
-		result = "Rental Record for " + getName() + "\n";
+		result += "Rental Record for " + getName();
 
 		if (generateInHTML) {
 			result += "</h1>";
@@ -63,8 +63,8 @@ public class Customer {
 		}
 		// add footer lines
 		if (generateInHTML) {
-			result += "<p> Amount owed is " + String.valueOf(totalAmount) + "</p>";
-			result += "<p> You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points </p>";
+			result += "<p>Amount owed is " + String.valueOf(totalAmount) + "</p>";
+			result += "<p>You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points </p>";
 		} else {
 			result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
 			result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";

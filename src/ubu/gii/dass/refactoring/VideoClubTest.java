@@ -36,6 +36,9 @@ public class VideoClubTest {
 
 	@Test
 	public void testAlquiler() {
+		
+		m12.setPriceCode(2);
+		assertTrue("No modifica el precio", m12.getPriceCode()==2);
 
 		Rental r1 = new Rental(m11, 5);
 		Rental r2 = new Rental(m0, 1);
@@ -53,7 +56,15 @@ public class VideoClubTest {
 				+ "You earned 4 frequent renter points");
 
 		assertTrue("Calcula mal el alquiler", salidaEsperada.equals(salida));
-
+		
+		salida = c1.statement(true);
+		assertFalse("Misma cadena para html", salidaEsperada.equals(salida));
+		salidaEsperada = "<h1>Rental Record for Manuel</h1>"
+				+ "<H2>Sky Captain	15.0</H2>"
+				+ "<H2>Accion Mutante	2.0</H2>"
+				+ "<H2>Hermano Oso	12.0</H2>"
+				+ "<p>Amount owed is 29.0</p>"
+				+ "<p>You earned 4 frequent renter points </p>";
+		assertTrue("Cadena incorrecta o no suma bien los puntos", salidaEsperada.equals(salida));
 	}
-
 }

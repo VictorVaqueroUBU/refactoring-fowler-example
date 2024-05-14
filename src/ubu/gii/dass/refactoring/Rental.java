@@ -28,24 +28,25 @@ public class Rental {
 		return _movie;
 	}
 
-	double calculateAmount(double thisAmount) {
+	double calculateAmount() {
+		double calculatedAmount = 0;
 		// determine amounts for each line
 		switch (getMovie().getPriceCode()) {
 		case Movie.REGULAR:
-			thisAmount += 2;
+			calculatedAmount += 2;
 			if (getDaysRented() > 2)
-				thisAmount += (getDaysRented() - 2) * 1.5;
+				calculatedAmount += (getDaysRented() - 2) * 1.5;
 			break;
 		case Movie.NEW_RELEASE:
-			thisAmount += getDaysRented() * 3;
+			calculatedAmount += getDaysRented() * 3;
 			break;
 		case Movie.CHILDRENS:
-			thisAmount += 1.5;
+			calculatedAmount += 1.5;
 			if (getDaysRented() > 3)
-				thisAmount += (getDaysRented() - 3) * 1.5;
+				calculatedAmount += (getDaysRented() - 3) * 1.5;
 			break;
 		}
-		return thisAmount;
+		return calculatedAmount;
 	}
 
 	int increaseFrequentRenterPoints(int frequentRenterPoints) {
